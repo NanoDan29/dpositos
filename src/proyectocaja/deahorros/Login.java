@@ -17,22 +17,22 @@ import javax.swing.JOptionPane;
  * @author jowel
  */
 public class Login extends javax.swing.JFrame {
-    
+
     String barra = File.separator;
     String ubicacion = System.getProperty("user.dir") + barra + "Registros" + barra;
-    
+
     Menu miMenu;
-    
+
     public Login() {
         initComponents();
         miMenu = new Menu();
-        
+
     }
-    
+
     public void buscarCedula() {
-        
+
         File url = new File(ubicacion + txtCedulaLogin.getText() + ".txt");
-        
+
         if (txtCedulaLogin.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Por favor ingrese la cedula");
         } else {
@@ -46,7 +46,7 @@ public class Login extends javax.swing.JFrame {
 
                     //Mandamos los datos entre frames
                     miMenu.labelPerfil.setText("Cedula: " + mostrar.getProperty("Id") + "  Profesor :" + mostrar.getProperty("Nombre"));
-                    
+
                     miMenu.labelMDMenu.setText(mostrar.getProperty("CuotaAhorro"));
                     miMenu.labelCedulaMenu.setText(mostrar.getProperty("Id"));
 
@@ -54,27 +54,27 @@ public class Login extends javax.swing.JFrame {
                     miMenu.setVisible(true);
                     miMenu.setLocationRelativeTo(null);
                     this.setVisible(false);
-                    
+
                 } catch (Exception e) {
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Este registro no existe");
             }
         }
-        
+
     }
-    
+
     public void buscarTodasLasCedulas() {
 
         //Listamos todos los archivos que registramos
         File maindir = new File(ubicacion);
         if (maindir.exists() && maindir.isDirectory()) {
             File arr[] = maindir.listFiles();
-            System.out.println(arr.length);
+           
             RecursivePrint(arr, 0, 0);
         }
     }
-    
+
     public void RecursivePrint(File[] arr, int index, int level) {
         // terminate condition 
         if (index == arr.length) {
@@ -88,13 +88,14 @@ public class Login extends javax.swing.JFrame {
 
         // para archivos 
         if (arr[index].isFile()) {
-            System.out.println(arr[index].getName());
+            
+            arr[index].getName();
         }
 
         // recursion for main directory 
         RecursivePrint(arr, ++index, level);
     }
-    
+
     @SuppressWarnings("unchecked")
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -198,15 +199,27 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        buscarCedula();
-        buscarTodasLasCedulas();
+
+        if (txtCedulaLogin.getText().equals("admin")) {
+            Admin miAdmin = new Admin();
+            miAdmin.setLocationRelativeTo(null);
+            miAdmin.setVisible(true);
+            this.setVisible(false);
+
+        } else {
+            buscarCedula();
+            buscarTodasLasCedulas();
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
         Registro miRegistro = new Registro();
         miRegistro.setLocationRelativeTo(null);
         miRegistro.setVisible(true);
         this.setVisible(false);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -242,7 +255,7 @@ public class Login extends javax.swing.JFrame {
                 Login miLogin = new Login();
                 miLogin.setVisible(true);
                 miLogin.setLocationRelativeTo(null);
-                
+
             }
         });
     }

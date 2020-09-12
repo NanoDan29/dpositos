@@ -1,0 +1,3 @@
+Id=dir1
+Descripcion=BancoGyayaquil
+Vigente=Vigente

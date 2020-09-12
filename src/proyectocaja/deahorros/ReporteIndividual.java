@@ -33,10 +33,9 @@ public class ReporteIndividual extends javax.swing.JFrame {
     public void cargarDatos() {
         
         String nombreArchivo = labelCedulaRI.getText() + ".txt";
-        File crearUbicacion = new File(ubicacion);
         File crearArchivo = new File(ubicacion + nombreArchivo);
         
-        System.out.println(crearArchivo);
+        
         
         try {
             if (crearArchivo.exists()) {

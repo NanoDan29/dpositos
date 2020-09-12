@@ -1,0 +1,8 @@
+id=dir3
+noSoli=2
+cedula=1003852551
+profesorGarante=1234567890
+fecha=11/9/8
+cantidad=280
+plazo=13
+aprobar=SinAprobar

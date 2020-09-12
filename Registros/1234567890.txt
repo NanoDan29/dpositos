@@ -1,0 +1,5 @@
+Id=1234567890
+Nombre=Carlos
+Telefono=0987654321
+Direccion=alap
+CuotaAhorro=900
